@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Slachtofferhulp × Microsoft — Kahoot Workshop</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  :root{
+    --bg:#0b1020;--card:#141a30;--ink:#f5f7ff;--muted:#9aa6c7;
+    --shn:#0066b3;--ok:#22c55e;--warn:#f59e0b;--bad:#ef4444;--purple:#a855f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Inter,sans-serif;background:linear-gradient(180deg,#0b1020,#0a0f25);color:var(--ink);}
+  header{padding:48px 24px 24px;text-align:center;border-bottom:1px solid #1e253f;}
+  header h1{margin:0 0 8px;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;}
+  header p{margin:0;color:var(--muted);max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--shn);color:#fff;font-size:12px;font-weight:600;margin-bottom:12px;letter-spacing:.04em;text-transform:uppercase}
+  main{max-width:920px;margin:0 auto;padding:32px 24px 80px;}
+  .q{background:var(--card);border:1px solid #1e253f;border-radius:18px;padding:24px;margin:0 0 18px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .q h2{margin:0 0 4px;font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .q h3{margin:0 0 18px;font-size:20px;line-height:1.35}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:560px){.opts{grid-template-columns:1fr}}
+  .opt{padding:14px 16px;border-radius:12px;color:#fff;font-weight:600;display:flex;align-items:flex-start;gap:10px;line-height:1.35;cursor:pointer;border:0;text-align:left;font-size:15px}
+  .opt span.tri{font-size:18px;flex:0 0 22px}
+  .o1{background:#ef4444}.o2{background:#3b82f6}.o3{background:#f59e0b}.o4{background:#22c55e}
+  details{margin-top:14px;background:#0b1020;border:1px dashed #2a3358;border-radius:10px;padding:10px 14px}
+  details summary{cursor:pointer;color:var(--muted);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+  details p{margin:10px 0 4px;color:#cfd6ee;line-height:1.5}
+  details b{color:#fff}
+  .pill{display:inline-block;padding:2px 8px;background:#1e253f;border-radius:999px;font-size:11px;color:#cfd6ee;margin-right:6px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .section{margin:40px 0 14px;padding:14px 18px;background:linear-gradient(90deg,#0066b3,#a855f7);border-radius:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:13px}
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:28px}
+  .tag{font-size:11px;background:#0066b3;color:#fff;padding:2px 8px;border-radius:999px;margin-left:8px;text-transform:uppercase;letter-spacing:.04em;vertical-align:middle}
+</style>
+</head>
+<body>
+<header>
+  <div class="badge">🎉 Workshop Kahoot · Slachtofferhulp Nederland × Microsoft</div>
+  <h1>Which Microsoft does what? <br/>The very serious quiz™</h1>
+  <p>15 questions to break the ice, bust a few myths, and prove that "there is more than one right answer" is itself the right answer. We close with the BXT framework so you walk out able to score your own use cases.</p>
+</header>
+
+<main>
+
+<div class="section">🧊 Round 1 · Icebreakers (warm up the room)</div>
+
+<div class="q">
+  <h2>Q1</h2>
+  <h3>A caseworker asks: "Which Microsoft tool should I open?" What's the most honest answer?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>Outlook. Always Outlook.</button>
+    <button class="opt o2"><span class="tri">◆</span>It depends 🤷</button>
+    <button class="opt o3"><span class="tri">●</span>Teams, obviously — meetings</button>
+    <button class="opt o4"><span class="tri">■</span>Notepad.exe (classic)</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆ It depends.</b> Really. A good platform is one that <i>fits the task</i>. Today we'll meet 8 capabilities — not 1 hammer for every nail.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q2</h2>
+  <h3>"One Microsoft Ecosystem" means…</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>One tool that does everything</button>
+    <button class="opt o2"><span class="tri">◆</span>One Microsoft account for the entire org</button>
+    <button class="opt o3"><span class="tri">●</span>Connected platforms linking data, AI and people</button>
+    <button class="opt o4"><span class="tri">■</span>One giant Excel sheet 📊</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>● Connected platforms.</b> Dynamics 365 captures cases, Fabric collects the data, Foundry/Copilot Studio build the agents, M365 surfaces it in Word/Excel/Teams. Nobody needs to go "all-in" on one thing.</p></details>
+</div>
+
+<div class="section">🏗️ Round 2 · Right platform for the right job</div>
+
+<div class="q">
+  <h2>Q3 <span class="tag">Business Platform</span></h2>
+  <h3>A new victim case comes in via the website. Where should it ideally land?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>An Excel sheet on SharePoint</button>
+    <button class="opt o2"><span class="tri">◆</span>A WhatsApp group called "intake"</button>
+    <button class="opt o3"><span class="tri">●</span>Dynamics 365 Customer Service</button>
+    <button class="opt o4"><span class="tri">■</span>A Post-it on Henk's monitor</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>● Dynamics 365.</b> Structured case, audit trail, workflows, SLAs. Excel might survive day 1; it won't survive day 365.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q4 <span class="tag">Data & Analytics</span></h2>
+  <h3>The board wants to know: "How many cases per district per quarter?" Where do you build that?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>Power BI on Microsoft Fabric (OneLake)</button>
+    <button class="opt o2"><span class="tri">◆</span>A very pretty PowerPoint full of screenshots</button>
+    <button class="opt o3"><span class="tri">●</span>Excel pivot table, emailed every Friday</button>
+    <button class="opt o4"><span class="tri">■</span>Ask around the office until someone knows</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>▲ Power BI on Fabric.</b> Live, governed, repeatable. <i>Plot twist:</i> ▲ and ● can both be right — start small with Excel, scale up to Fabric once it gets repetitive. It's not betrayal.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q5 <span class="tag">AI Agents</span></h2>
+  <h3>You want a chatbot that only answers questions about Slachtofferhulp procedures (and not about the Champions League). What do you pick?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>ChatGPT, no further instructions</button>
+    <button class="opt o2"><span class="tri">◆</span>Copilot Studio (low-code) or Microsoft Foundry (pro-code)</button>
+    <button class="opt o3"><span class="tri">●</span>A really long FAQ page</button>
+    <button class="opt o4"><span class="tri">■</span>Intern Tom with a phone</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆ Copilot Studio or Foundry.</b> Both are great — pick based on skill and complexity. Quick PoC? Copilot Studio. Custom RAG + evals + grounding on Fabric? Foundry. Both ground on your data — no hallucinated football trivia.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q6 <span class="tag">Productivity</span></h2>
+  <h3>A caseworker wants AI to summarize a long report inside Word. Best place to do this?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>Export to PDF, upload to a random website</button>
+    <button class="opt o2"><span class="tri">◆</span>M365 Copilot, directly in Word</button>
+    <button class="opt o3"><span class="tri">●</span>Print it and read it slowly</button>
+    <button class="opt o4"><span class="tri">■</span>Ctrl+A, Ctrl+C, paste into ChatGPT.com</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆ M365 Copilot.</b> Data stays inside your tenant + governance. Option ■ is genuinely dangerous with victim data — privacy by design starts with tool choice.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q7 <span class="tag">Trust & Safety</span></h2>
+  <h3>An AI agent is about to say something to a victim. What sits in between to prevent "accidents"?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>Hope and prayer 🙏</button>
+    <button class="opt o2"><span class="tri">◆</span>Microsoft Content Safety + Responsible AI guardrails</button>
+    <button class="opt o3"><span class="tri">●</span>A colleague reading along in real time</button>
+    <button class="opt o4"><span class="tri">■</span>Nothing. AI is always nice.</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆ Content Safety + Responsible AI.</b> Moderation, hate/violence/self-harm filters, prompt-injection protection. For a victim support organization this is non-negotiable.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q8 <span class="tag">Content Understanding</span></h2>
+  <h3>A pile of scanned police reports (PDFs + audio recordings of intakes). What extracts structured data from them?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>An intern with coffee</button>
+    <button class="opt o2"><span class="tri">◆</span>Microsoft Content Understanding (docs / audio / video extraction)</button>
+    <button class="opt o3"><span class="tri">●</span>Adobe Acrobat free trial</button>
+    <button class="opt o4"><span class="tri">■</span>Photoshop and a lot of patience</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆ Content Understanding.</b> One service for documents, audio AND video. Output lands neatly in Fabric for analysis.</p></details>
+</div>
+
+<div class="section">🔀 Round 3 · Mythbusters</div>
+
+<div class="q">
+  <h2>Q9</h2>
+  <h3>True or False: "You must pick one Microsoft platform and stick with it forever."</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>True — otherwise it's chaos</button>
+    <button class="opt o2"><span class="tri">◆</span>False — pick per use case, they talk to each other</button>
+    <button class="opt o3"><span class="tri">●</span>True — Microsoft designed it that way</button>
+    <button class="opt o4"><span class="tri">■</span>Maybe (evasive answer)</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆ False.</b> This is the whole point of today. Copilot Studio + Foundry can coexist. Fabric and Excel too. Nobody wins a prize for being a purist.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q10</h2>
+  <h3>Which statement about Microsoft Fabric vs Power BI is correct?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>Same thing, different name</button>
+    <button class="opt o2"><span class="tri">◆</span>Power BI lives INSIDE Fabric — Fabric adds OneLake, Lakehouse, pipelines, AI</button>
+    <button class="opt o3"><span class="tri">●</span>Fabric completely replaces Power BI</button>
+    <button class="opt o4"><span class="tri">■</span>Fabric is only for banks</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆.</b> Fabric is the broader data platform; Power BI is the visualization layer on top. You can absolutely keep using Power BI on its own.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q11</h2>
+  <h3>"Low-code" agents in Copilot Studio means…</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>You'll never need developers again</button>
+    <button class="opt o2"><span class="tri">◆</span>Business + IT build together, faster iteration, devs do the heavy lifting</button>
+    <button class="opt o3"><span class="tri">●</span>It never actually works in production</button>
+    <button class="opt o4"><span class="tri">■</span>Demos only</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆.</b> Low-code = start faster with domain knowledge in the room. For complex agents, evals and custom RAG you graduate to Foundry. Both live side by side.</p></details>
+</div>
+
+<div class="section">🎯 Round 4 · BXT — How do you pick a good use case?</div>
+
+<div class="q">
+  <h2>Q12</h2>
+  <h3>What does BXT stand for in the Microsoft envisioning framework?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>Bring Your Tea</button>
+    <button class="opt o2"><span class="tri">◆</span>Business · Experience · Technology</button>
+    <button class="opt o3"><span class="tri">●</span>Budget · Excel · Teams</button>
+    <button class="opt o4"><span class="tri">■</span>Better X Twitter</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆ Business · Experience · Technology.</b> Three lenses to score any AI use case honestly BEFORE you start building.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q13</h2>
+  <h3>Under "Business" you mostly check…</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>Whether the demo looks cool</button>
+    <button class="opt o2"><span class="tri">◆</span>Executive alignment + value + change management timeline</button>
+    <button class="opt o3"><span class="tri">●</span>Who has the coolest laptop</button>
+    <button class="opt o4"><span class="tri">■</span>Whether it would look good on LinkedIn</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆.</b> Without a sponsor, measurable value and a realistic timeline → straight to the pilot graveyard.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q14</h2>
+  <h3>Under "Experience" the focus is mostly on…</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>What color the button is</button>
+    <button class="opt o2"><span class="tri">◆</span>User needs, demand, and whether people will actually use it</button>
+    <button class="opt o3"><span class="tri">●</span>Whether the UI has dark mode</button>
+    <button class="opt o4"><span class="tri">■</span>How many emoji the bot can use</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆.</b> A beautiful product with no demand = expensive hobby project. Start at the caseworker, not at the tech.</p></details>
+</div>
+
+<div class="q">
+  <h2>Q15</h2>
+  <h3>Two use cases: (A) Volunteer matcher bot, (B) Predictive case prioritization. Both score high on Business + Experience. How do you choose?</h3>
+  <div class="opts">
+    <button class="opt o1"><span class="tri">▲</span>Whoever shouts loudest in the meeting wins</button>
+    <button class="opt o2"><span class="tri">◆</span>Bring in the Technology score: data quality, feasibility, risk</button>
+    <button class="opt o3"><span class="tri">●</span>Do both, half-heartedly, quickly</button>
+    <button class="opt o4"><span class="tri">■</span>Flip a coin 🪙</button>
+  </div>
+  <details><summary>Reveal</summary><p><b>◆.</b> The T in BXT is the tiebreaker. High feasibility + low risk → start there. The other one goes on the roadmap, not in the bin.</p></details>
+</div>
+
+<div class="section">🏁 Wrap-up — three things to remember</div>
+
+<div class="q">
+  <h3 style="margin-bottom:8px">1. One ecosystem, many tools.</h3>
+  <p style="margin:0;color:#cfd6ee;line-height:1.5">Dynamics 365 · Microsoft 365 · Fabric · Foundry · Copilot Studio · M365 Copilot · Content Understanding · Content Safety. They talk to each other — pick per problem, not per religion.</p>
+</div>
+<div class="q">
+  <h3 style="margin-bottom:8px">2. More than one answer is allowed.</h3>
+  <p style="margin:0;color:#cfd6ee;line-height:1.5">Copilot Studio <i>and</i> Foundry. Excel <i>and</i> Fabric. Start small, scale once value is proven. No holy wars required.</p>
+</div>
+<div class="q">
+  <h3 style="margin-bottom:8px">3. BXT before you build.</h3>
+  <p style="margin:0;color:#cfd6ee;line-height:1.5"><b>Business</b> (sponsor, value, time) · <b>Experience</b> (user demand, adoption) · <b>Technology</b> (data, feasibility, risk). Score first, build second. Saves time, money and frustration.</p>
+</div>
+
+</main>
+
+<footer>
+  Built for Raj's Slachtofferhulp workshop · Source: <a style="color:#9aa6c7" href="https://raj-microsoft.github.io/victim-support-ghcp/">victim-support-ghcp</a> + <a style="color:#9aa6c7" href="https://learn.microsoft.com/en-us/microsoft-cloud/dev/copilot/isv/business-envisioning">MS Learn — Business Envisioning (BXT)</a>
+</footer>
+</body>
+</html>
