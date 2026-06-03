@@ -16,6 +16,7 @@ import {
   Layers,
   Zap,
   BookOpen,
+  Database,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -23,7 +24,9 @@ import { Button } from "@/components/ui/button";
 
 // --- Types ---
 
-type Layer = "intake" | "classify" | "recommend" | "results";
+type Layer = "intake" | "classify" | "refine" | "recommend" | "results";
+
+type DataSource = "sharepoint-m365" | "fabric-lakehouse" | "custom-multi" | "dynamics-dataverse";
 
 interface IntakeAnswers {
   outcome: string;
@@ -178,6 +181,60 @@ const solutionPatterns = [
   { name: "Progressive Enhancement", capabilities: ["Copilot Studio → Azure", "Low-code → Pro-code"], color: "bg-amber-100 text-amber-800" },
 ];
 
+// Refinement options for use cases that depend on data source
+const dataSourceOptions: { id: DataSource; label: string; description: string; icon: string }[] = [
+  { id: "sharepoint-m365", label: "SharePoint / Microsoft 365", description: "Documents, wikis, emails, Teams content — already in M365 tenant", icon: "📁" },
+  { id: "fabric-lakehouse", label: "Microsoft Fabric / Lakehouse", description: "Structured analytics data, semantic models, case/contact records in OneLake", icon: "🗄️" },
+  { id: "dynamics-dataverse", label: "Dynamics 365 / Dataverse", description: "CRM data, case records, contact entities, business processes", icon: "⚙️" },
+  { id: "custom-multi", label: "Custom / Multi-source", description: "External APIs, databases, multiple systems, or complex retrieval needs", icon: "🔗" },
+];
+
+const dataSourceRecommendations: Record<DataSource, Recommendation> = {
+  "sharepoint-m365": {
+    primary: "M365 Copilot or Copilot Studio",
+    supporting: ["Graph connectors", "Declarative agents", "SharePoint knowledge grounding"],
+    pattern: "Adopt M365 Copilot if out-of-box coverage suffices. Use Copilot Studio with SharePoint knowledge sources for targeted Q&A with custom topics.",
+    governance: "M365 tenant trust boundary, SharePoint permissions inherited",
+    actionSafety: "Read-only — citations from SharePoint sources",
+    experienceModel: "Companion — answers inside Teams, Word, or a custom Copilot Studio bot",
+    adoptExtendBuild: "Adopt M365 Copilot first. Extend with Copilot Studio declarative agent if you need custom instructions or scoped knowledge.",
+    demoPath: "Show M365 Copilot answering from SharePoint, then Copilot Studio with knowledge grounding",
+  },
+  "fabric-lakehouse": {
+    primary: "Microsoft Fabric Data Agents",
+    supporting: ["Semantic models", "Power BI Q&A", "OneLake"],
+    pattern: "Microsoft Fabric + Power BI translytical / data-agent pattern. Fabric data agents query semantic models directly.",
+    governance: "Fabric workspace governance, semantic model RLS",
+    actionSafety: "Read-only — analytics answers with citations",
+    experienceModel: "Companion — natural-language Q&A over analytical data",
+    adoptExtendBuild: "Extend — add Fabric data agent over existing semantic models for self-service analytics.",
+    demoPath: "Build/query a Fabric data agent over case analytics semantic model",
+  },
+  "dynamics-dataverse": {
+    primary: "Copilot Studio with Dataverse connector",
+    supporting: ["Dynamics 365 Copilot", "Power Automate", "Dataverse knowledge"],
+    pattern: "Low-code assistant pattern with Dataverse as knowledge source. Copilot Studio connects directly to Dynamics/Dataverse entities.",
+    governance: "Power Platform DLP, Dataverse row-level security",
+    actionSafety: "Read actions by default, write actions with user confirmation",
+    experienceModel: "Companion — embedded in Dynamics 365 or Teams",
+    adoptExtendBuild: "Adopt Dynamics 365 Copilot first. Extend with Copilot Studio for custom topics and business logic.",
+    demoPath: "Show Copilot Studio querying case data from Dataverse",
+  },
+  "custom-multi": {
+    primary: "Microsoft Foundry Agents",
+    supporting: ["Azure AI Search", "Custom connectors", "RAG orchestration", "Content Safety"],
+    pattern: "Foundry grounded agent pattern. Pro-code agent with Azure AI Search index across multiple sources, custom tool-use, and full orchestration control.",
+    governance: "Azure landing zone, RBAC, content filtering, managed identity",
+    actionSafety: "Configurable — read-only to write actions with approval middleware",
+    experienceModel: "Destination or Companion — custom UX or published into Teams/M365",
+    adoptExtendBuild: "Build — pro-code custom agent when requirements exceed low-code or single-source patterns.",
+    demoPath: "Build a Foundry agent with Azure AI Search grounding across multiple sources",
+  },
+};
+
+// Use cases that need data source refinement
+const needsRefinement: UseCaseType[] = ["knowledge-retrieval", "custom-agent", "conversational-assistant"];
+
 // --- Component ---
 
 export default function DecisionTreeSection() {
@@ -185,6 +242,7 @@ export default function DecisionTreeSection() {
   const [intake, setIntake] = useState<IntakeAnswers>({ outcome: "", existingTool: null, needsAI: null, needsAgent: null });
   const [bxt, setBxt] = useState<BXTScore>({ business: 3, experience: 3, technology: 3 });
   const [selectedUseCase, setSelectedUseCase] = useState<UseCaseType | null>(null);
+  const [selectedDataSource, setSelectedDataSource] = useState<DataSource | null>(null);
 
   const bxtTotal = bxt.business + bxt.experience + bxt.technology;
   const bxtCategory = bxtTotal >= 12 ? "Accelerate" : bxtTotal >= 8 ? "Incubate" : "Research";
@@ -195,9 +253,13 @@ export default function DecisionTreeSection() {
     setIntake({ outcome: "", existingTool: null, needsAI: null, needsAgent: null });
     setBxt({ business: 3, experience: 3, technology: 3 });
     setSelectedUseCase(null);
+    setSelectedDataSource(null);
   };
 
-  const recommendation = selectedUseCase ? recommendations[selectedUseCase] : null;
+  // Use refined recommendation if data source was selected, otherwise use base recommendation
+  const recommendation = selectedDataSource
+    ? dataSourceRecommendations[selectedDataSource]
+    : selectedUseCase ? recommendations[selectedUseCase] : null;
 
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-8">
@@ -210,13 +272,13 @@ export default function DecisionTreeSection() {
 
       {/* Progress */}
       <div className="flex flex-wrap items-center justify-center gap-2">
-          {(["intake", "classify", "recommend", "results"] as Layer[]).map((l, i) => (
+          {(["intake", "classify", "refine", "recommend", "results"] as Layer[]).map((l, i) => (
             <div key={l} className="flex items-center gap-2">
               <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all ${layer === l ? "bg-primary text-white" : layers.indexOf(layer) > i ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
                 {layers.indexOf(layer) > i ? <CheckCircle2 className="w-4 h-4" /> : <Circle className="w-4 h-4" />}
-                {["Should we?", "What type?", "Which pattern?", "Results"][i]}
+                {["Should we?", "What type?", "Where's the data?", "Pattern", "Results"][i]}
               </div>
-              {i < 3 && <ArrowRight className="w-4 h-4 text-gray-300" />}
+              {i < 4 && <ArrowRight className="w-4 h-4 text-gray-300" />}
             </div>
           ))}
         </div>
@@ -333,7 +395,14 @@ export default function DecisionTreeSection() {
                 {useCaseOptions.map((uc) => (
                   <button
                     key={uc.id}
-                    onClick={() => { setSelectedUseCase(uc.id); setLayer("recommend"); }}
+                    onClick={() => {
+                      setSelectedUseCase(uc.id);
+                      if (needsRefinement.includes(uc.id)) {
+                        setLayer("refine");
+                      } else {
+                        setLayer("recommend");
+                      }
+                    }}
                     className={`text-left p-4 rounded-xl border-2 transition-all hover:shadow-md hover:border-primary/50 ${selectedUseCase === uc.id ? "border-primary bg-primary/5" : "border-gray-100"}`}
                   >
                     <div className="flex items-center gap-2 mb-2 text-gray-700">
@@ -346,6 +415,44 @@ export default function DecisionTreeSection() {
               </div>
               <div className="pt-6 flex justify-between">
                 <Button variant="outline" onClick={() => setLayer("intake")}>← Back</Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Layer 2b: Refine — Data source selection */}
+        {layer === "refine" && (
+          <Card className="max-w-3xl mx-auto">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Database className="w-5 h-5 text-violet-500" />
+                Where does the knowledge live?
+              </CardTitle>
+              <p className="text-sm text-gray-500 mt-1">
+                The right tool depends on where your data is. Select the primary source.
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {dataSourceOptions.map((ds) => (
+                  <button
+                    key={ds.id}
+                    onClick={() => { setSelectedDataSource(ds.id); setLayer("recommend"); }}
+                    className={`text-left p-5 rounded-xl border-2 transition-all hover:shadow-md hover:border-primary/50 ${selectedDataSource === ds.id ? "border-primary bg-primary/5" : "border-gray-100"}`}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xl">{ds.icon}</span>
+                      <span className="font-semibold text-sm text-gray-900">{ds.label}</span>
+                    </div>
+                    <p className="text-xs text-gray-500">{ds.description}</p>
+                  </button>
+                ))}
+              </div>
+              <div className="pt-6 flex justify-between">
+                <Button variant="outline" onClick={() => { setLayer("classify"); setSelectedDataSource(null); }}>← Back</Button>
+                <Button variant="outline" onClick={() => { setSelectedDataSource(null); setLayer("recommend"); }}>
+                  Skip — use general recommendation
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -490,7 +597,7 @@ export default function DecisionTreeSection() {
 
 // --- Helpers ---
 
-const layers: Layer[] = ["intake", "classify", "recommend", "results"];
+const layers: Layer[] = ["intake", "classify", "refine", "recommend", "results"];
 
 function DetailCard({ title, value }: { title: string; value: string }) {
   return (
