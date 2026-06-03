@@ -80,60 +80,39 @@ export default function UseCaseSection() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl space-y-12">
+    <div className="mx-auto max-w-4xl space-y-12">
       <div className="relative">
-        <div className="absolute left-1/2 top-0 hidden h-full w-1 -translate-x-1/2 bg-gradient-to-b from-blue-500 via-purple-500 to-red-500 md:block" />
+        {/* Center line */}
+        <div className="absolute left-6 top-0 h-full w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-red-500 md:left-1/2 md:-translate-x-1/2" />
 
-        <div className="space-y-12">
-          {timelineSteps.map((step, index) => {
+        <div className="space-y-10">
+          {timelineSteps.map((step) => {
             const Icon = step.icon;
-            const isEven = index % 2 === 0;
 
             return (
               <div
                 key={step.number}
-                className="relative flex flex-col items-center gap-8 md:flex-row"
+                className="relative flex items-start gap-6 pl-16 md:pl-0"
               >
-                <div
-                  className={`hidden md:flex md:w-5/12 ${isEven ? "order-1 text-right" : "order-3"}`}
-                >
-                  {isEven ? (
-                    <Card className="w-full border-slate-200 shadow-sm transition-shadow hover:shadow-md">
-                      <CardContent className="pt-6">
-                        <div className="space-y-3">
-                          <div className="mb-2 flex items-center justify-end gap-2">
-                            <Badge className={step.badgeColor}>{step.badge}</Badge>
-                          </div>
-                          <h3 className="text-xl font-semibold text-slate-900">{step.title}</h3>
-                          <p className="text-sm leading-relaxed text-slate-600">{step.description}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ) : null}
+                {/* Number circle */}
+                <div className="absolute left-3 z-10 flex h-7 w-7 items-center justify-center rounded-full border-2 border-slate-900 bg-white text-xs font-bold text-slate-900 md:left-1/2 md:-translate-x-1/2">
+                  {step.number}
                 </div>
 
-                <div className="relative z-10 order-2 flex h-12 w-12 flex-shrink-0 items-center justify-center md:order-2">
-                  <div className="flex h-full w-full items-center justify-center rounded-full border-4 border-slate-900 bg-white shadow-lg">
-                    <div className="text-sm font-bold text-slate-900">{step.number}</div>
-                  </div>
-                  <div className="absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2">
-                    <Icon className="h-8 w-8 text-slate-400 opacity-20" />
-                  </div>
-                </div>
-
-                <div
-                  className={`w-full md:w-5/12 ${isEven ? "order-3" : "order-1 md:order-3"}`}
-                >
-                  <Card className="w-full border-slate-200 shadow-sm transition-shadow hover:shadow-md">
-                    <CardContent className="pt-6">
-                      <div className="space-y-3">
-                        <div className="mb-2 flex items-center gap-3">
+                {/* Card - alternating sides on desktop */}
+                <div className={`w-full md:w-[calc(50%-2rem)] ${
+                  step.number % 2 === 1 ? "md:mr-auto" : "md:ml-auto"
+                }`}>
+                  <Card className="border-slate-200 shadow-sm transition-shadow hover:shadow-md">
+                    <CardContent className="pt-5 pb-5">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-3">
                           <div className="rounded-lg bg-slate-100 p-2">
-                            <Icon className="h-5 w-5 text-slate-700" />
+                            <Icon className="h-4 w-4 text-slate-700" />
                           </div>
                           <Badge className={step.badgeColor}>{step.badge}</Badge>
                         </div>
-                        <h3 className="text-xl font-semibold text-slate-900">{step.title}</h3>
+                        <h3 className="text-lg font-semibold text-slate-900">{step.title}</h3>
                         <p className="text-sm leading-relaxed text-slate-600">{step.description}</p>
                       </div>
                     </CardContent>
