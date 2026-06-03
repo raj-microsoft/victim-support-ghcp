@@ -89,25 +89,25 @@ const recommendations: Record<UseCaseType, Recommendation> = {
     primary: "Microsoft Fabric + Power BI",
     supporting: ["OneLake", "Lakehouse", "Semantic models", "Notebooks"],
     pattern: "Executive insight pattern",
-    governance: "Fabric workspace security, RLS on semantic models",
+    governance: "Microsoft Fabric workspace security, RLS on semantic models",
     actionSafety: "Read-only — audit logs and citations",
     experienceModel: "Destination — analysts go to Power BI dashboards",
-    adoptExtendBuild: "Build on Fabric — data-heavy, analytics-centric",
+    adoptExtendBuild: "Build on Microsoft Fabric — data-heavy, analytics-centric",
     demoPath: "Analyze case trends and risk signals in Power BI",
   },
   "knowledge-retrieval": {
-    primary: "Fabric Data Agents",
+    primary: "Microsoft Fabric Data Agents",
     supporting: ["Semantic models", "OneLake", "Microsoft 365 Copilot"],
-    pattern: "Fabric + Power BI translytical / data-agent pattern",
-    governance: "Fabric workspace governance, semantic model permissions",
+    pattern: "Microsoft Fabric + Power BI translytical / data-agent pattern",
+    governance: "Microsoft Fabric workspace governance, semantic model permissions",
     actionSafety: "Read-only — citations from governed data",
     experienceModel: "Companion — AI assists inside analyst workflow",
-    adoptExtendBuild: "Extend — add Copilot experience over existing Fabric data",
-    demoPath: "Build/query a Fabric data agent",
+    adoptExtendBuild: "Extend — add Copilot experience over existing Microsoft Fabric data",
+    demoPath: "Build/query a Microsoft Fabric data agent",
   },
   "document-extraction": {
     primary: "Azure AI Content Understanding",
-    supporting: ["Fabric", "Microsoft Foundry", "Blob Storage"],
+    supporting: ["Microsoft Fabric", "Microsoft Foundry", "Blob Storage"],
     pattern: "Document intelligence pattern",
     governance: "Azure landing zone, data residency controls",
     actionSafety: "Read-only extraction, write to case fields with approval",
@@ -168,11 +168,11 @@ const recommendations: Record<UseCaseType, Recommendation> = {
 };
 
 const solutionPatterns = [
-  { name: "Case Intelligence", capabilities: ["Dynamics 365 CS", "Fabric", "Power BI"], color: "bg-purple-100 text-purple-800" },
+  { name: "Case Intelligence", capabilities: ["Dynamics 365 CS", "Microsoft Fabric", "Power BI"], color: "bg-purple-100 text-purple-800" },
   { name: "AI Worker Assistant", capabilities: ["Dynamics 365 CS", "Microsoft Foundry Agents", "Responsible AI"], color: "bg-blue-100 text-blue-800" },
-  { name: "Document Intelligence", capabilities: ["Content Understanding", "Fabric", "Microsoft Foundry"], color: "bg-indigo-100 text-indigo-800" },
+  { name: "Document Intelligence", capabilities: ["Content Understanding", "Microsoft Fabric", "Microsoft Foundry"], color: "bg-indigo-100 text-indigo-800" },
   { name: "Safe Chatbot Evaluation", capabilities: ["Genesys", "Microsoft Foundry Evals", "Content Safety"], color: "bg-red-100 text-red-800" },
-  { name: "Executive Insight", capabilities: ["Fabric Semantic Model", "Power BI", "M365 Copilot"], color: "bg-green-100 text-green-800" },
+  { name: "Executive Insight", capabilities: ["Microsoft Fabric Semantic Model", "Power BI", "M365 Copilot"], color: "bg-green-100 text-green-800" },
   { name: "Low-Code Assistant", capabilities: ["Copilot Studio", "Connectors", "Dataverse"], color: "bg-pink-100 text-pink-800" },
   { name: "Microsoft Foundry → M365", capabilities: ["Microsoft Foundry Agent", "Teams", "M365 Agents SDK"], color: "bg-cyan-100 text-cyan-800" },
   { name: "Progressive Enhancement", capabilities: ["Copilot Studio → Azure", "Low-code → Pro-code"], color: "bg-amber-100 text-amber-800" },
@@ -439,7 +439,7 @@ export default function DecisionTreeSection() {
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <CheckpointItem label="Structured & predictable task" recommendation="Deterministic workflow / business rules" applicable={!intake.needsAI} />
-                  <CheckpointItem label="Reporting, trends, insight" recommendation="Fabric + Power BI" applicable={!intake.needsAI} />
+                  <CheckpointItem label="Reporting, trends, insight" recommendation="Microsoft Fabric + Power BI" applicable={!intake.needsAI} />
                   <CheckpointItem label="Static knowledge retrieval" recommendation="Search / RAG before agents" applicable={intake.needsAI === true && !intake.needsAgent} />
                   <CheckpointItem label="Reasoning, ambiguity, multi-step" recommendation="Consider AI agents" applicable={intake.needsAgent === true} />
                 </div>

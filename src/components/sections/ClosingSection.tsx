@@ -18,7 +18,7 @@ const transformationSteps: TransformationStep[] = [
   {
     number: 2,
     title: "Prove Value",
-    description: "Demonstrate impact with Fabric analytics",
+    description: "Demonstrate impact with Microsoft Fabric analytics",
   },
   {
     number: 3,

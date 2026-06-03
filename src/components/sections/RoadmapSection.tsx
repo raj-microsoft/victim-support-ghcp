@@ -98,8 +98,8 @@ const exampleInitiatives: Initiative[] = [
     owner: "Workshop Core Team",
   },
   {
-    id: "initiative-fabric-data-lake-setup",
-    milestone: "Fabric Data Lake Setup",
+    id: "initiative-Microsoft Fabric-data-lake-setup",
+    milestone: "Microsoft Fabric Data Lake Setup",
     date: "Q3 2026",
     slachtofferhulpNeeds:
       "Bring fragmented operational and outcomes data together for cross-team insight and trend detection.",

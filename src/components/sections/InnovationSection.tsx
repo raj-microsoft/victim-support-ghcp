@@ -25,13 +25,13 @@ const innovationPatterns: InnovationPattern[] = [
     icon: <AlertTriangle className="h-8 w-8" />,
     title: "Early-Warning Risk Systems",
     description:
-      "AI-powered pattern detection to identify victims at highest risk, enabling proactive support intervention through Fabric analytics and Microsoft Foundry agents.",
+      "AI-powered pattern detection to identify victims at highest risk, enabling proactive support intervention through Microsoft Fabric analytics and Microsoft Foundry agents.",
   },
   {
     icon: <Repeat2 className="h-8 w-8" />,
     title: "Repeat-Contact Detection",
     description:
-      "Identify when the same victim contacts multiple channels or services, connecting fragmented data using Dynamics 365 and Fabric for unified case history.",
+      "Identify when the same victim contacts multiple channels or services, connecting fragmented data using Dynamics 365 and Microsoft Fabric for unified case history.",
   },
   {
     icon: <Wifi className="h-8 w-8" />,

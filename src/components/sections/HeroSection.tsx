@@ -1,32 +1,37 @@
 "use client";
 
-import { ArrowRight, Brain, Database, FileText, Shield } from "lucide-react";
+import { ArrowRight, Brain, Database, FileText, Shield, MessageSquare, Sparkles, Eye, ShieldCheck } from "lucide-react";
 
 export default function HeroSection() {
-  const ecosystemSteps = [
+  // The full Microsoft ecosystem represented as layers
+  const ecosystemLayers = [
     {
-      title: "Dynamics 365",
-      description: "Customer Service",
-      icon: Shield,
-      color: "from-blue-500 to-blue-600",
+      label: "Business Platform",
+      items: [
+        { title: "Dynamics 365", subtitle: "Customer Service", icon: Shield, color: "from-blue-600 to-blue-700" },
+        { title: "Microsoft 365", subtitle: "Word · Excel · Teams", icon: FileText, color: "from-emerald-500 to-emerald-600" },
+      ],
     },
     {
-      title: "Fabric",
-      description: "Data Integration",
-      icon: Database,
-      color: "from-violet-500 to-violet-600",
+      label: "Data & Analytics",
+      items: [
+        { title: "Microsoft Fabric", subtitle: "OneLake · Lakehouse · Power BI", icon: Database, color: "from-violet-500 to-violet-600" },
+      ],
     },
     {
-      title: "Microsoft Foundry",
-      description: "Intelligent AI",
-      icon: Brain,
-      color: "from-pink-500 to-pink-600",
+      label: "AI & Agents",
+      items: [
+        { title: "Microsoft Foundry", subtitle: "Custom agents · RAG · Evals", icon: Brain, color: "from-pink-500 to-pink-600" },
+        { title: "Copilot Studio", subtitle: "Low-code agents · Agent Builder", icon: MessageSquare, color: "from-amber-500 to-amber-600" },
+        { title: "M365 Copilot", subtitle: "Declarative agents · Extensions", icon: Sparkles, color: "from-teal-500 to-teal-600" },
+      ],
     },
     {
-      title: "Microsoft 365",
-      description: "Collaboration",
-      icon: FileText,
-      color: "from-emerald-500 to-emerald-600",
+      label: "Trust & Safety",
+      items: [
+        { title: "Content Understanding", subtitle: "Docs · Audio · Video extraction", icon: Eye, color: "from-indigo-500 to-indigo-600" },
+        { title: "Content Safety", subtitle: "Moderation · Responsible AI", icon: ShieldCheck, color: "from-rose-500 to-rose-600" },
+      ],
     },
   ];
 
@@ -59,6 +64,7 @@ export default function HeroSection() {
 
   return (
     <div className="space-y-8">
+      {/* Hero banner */}
       <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-50 via-blue-50 to-violet-50 p-8 shadow-sm sm:p-10 lg:p-12">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-24 left-1/4 h-64 w-64 rounded-full bg-blue-200/40 blur-3xl" />
@@ -77,22 +83,18 @@ export default function HeroSection() {
                 One Microsoft ecosystem for modern victim support.
               </h2>
               <p className="max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
-                Discover how Dynamics 365 Customer Service, Microsoft Fabric, Microsoft Foundry,
-                and Microsoft 365 collaborate to deliver compassionate, intelligent, and scalable
-                victim support workflows.
+                From case intake in Dynamics 365 to analytics in Microsoft Fabric, intelligent agents in
+                Microsoft Foundry and Copilot Studio, and daily productivity in Microsoft 365 —
+                a connected platform that puts victims first.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3 text-sm text-slate-600">
-              <span className="rounded-full border border-white/80 bg-white/70 px-3 py-1.5 shadow-sm">
-                Case management
-              </span>
-              <span className="rounded-full border border-white/80 bg-white/70 px-3 py-1.5 shadow-sm">
-                Analytics & AI
-              </span>
-              <span className="rounded-full border border-white/80 bg-white/70 px-3 py-1.5 shadow-sm">
-                Productivity & governance
-              </span>
+              <span className="rounded-full border border-white/80 bg-white/70 px-3 py-1.5 shadow-sm">Case management</span>
+              <span className="rounded-full border border-white/80 bg-white/70 px-3 py-1.5 shadow-sm">Data & analytics</span>
+              <span className="rounded-full border border-white/80 bg-white/70 px-3 py-1.5 shadow-sm">AI agents</span>
+              <span className="rounded-full border border-white/80 bg-white/70 px-3 py-1.5 shadow-sm">Low-code builders</span>
+              <span className="rounded-full border border-white/80 bg-white/70 px-3 py-1.5 shadow-sm">Safety & governance</span>
             </div>
           </div>
 
@@ -112,38 +114,83 @@ export default function HeroSection() {
         </div>
       </div>
 
+      {/* Ecosystem map — layered view */}
       <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
         <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm font-medium text-primary">Connected platform flow</p>
+            <p className="text-sm font-medium text-primary">Microsoft ecosystem map</p>
             <h3 className="text-2xl font-semibold text-slate-950">
-              How the Microsoft stack works together
+              How the platform layers connect
             </h3>
           </div>
           <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
-            4 complementary layers
+            4 layers · 8 capabilities
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {ecosystemSteps.map((step, index) => {
-            const Icon = step.icon;
-
-            return (
-              <div key={step.title} className="relative rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
-                {index < ecosystemSteps.length - 1 ? (
-                  <ArrowRight className="absolute right-4 top-4 hidden h-4 w-4 text-slate-300 xl:block" />
-                ) : null}
-                <div className={`inline-flex rounded-2xl bg-gradient-to-br ${step.color} p-3 shadow-sm`}>
-                  <Icon className="h-6 w-6 text-white" />
-                </div>
-                <div className="mt-4 space-y-1">
-                  <h4 className="text-lg font-semibold text-slate-950">{step.title}</h4>
-                  <p className="text-sm text-slate-600">{step.description}</p>
-                </div>
+        <div className="space-y-4">
+          {ecosystemLayers.map((layer, layerIdx) => (
+            <div key={layer.label}>
+              <div className="mb-2 flex items-center gap-2">
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">{layer.label}</span>
+                <div className="h-px flex-1 bg-slate-100" />
               </div>
-            );
-          })}
+              <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${Math.min(layer.items.length, 3)}, 1fr)` }}>
+                {layer.items.map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.title} className="group relative rounded-xl border border-slate-200 bg-slate-50/70 p-4 transition-all hover:border-slate-300 hover:shadow-sm">
+                      <div className="flex items-start gap-3">
+                        <div className={`inline-flex shrink-0 rounded-xl bg-gradient-to-br ${item.color} p-2.5 shadow-sm`}>
+                          <Icon className="h-5 w-5 text-white" />
+                        </div>
+                        <div className="min-w-0">
+                          <h4 className="text-sm font-semibold text-slate-950">{item.title}</h4>
+                          <p className="mt-0.5 text-xs text-slate-500">{item.subtitle}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {layerIdx < ecosystemLayers.length - 1 && (
+                <div className="flex justify-center py-2">
+                  <ArrowRight className="h-4 w-4 rotate-90 text-slate-300" />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* How they connect */}
+        <div className="mt-6 rounded-xl border border-slate-100 bg-slate-50/50 p-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">How they work together</p>
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 text-xs text-slate-600">
+            <div className="flex items-start gap-2">
+              <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
+              <span><strong>Dynamics 365</strong> captures cases → data flows to <strong>Microsoft Fabric</strong></span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
+              <span><strong>Microsoft Fabric</strong> semantic models power <strong>Power BI</strong> dashboards & data agents</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-pink-400" />
+              <span><strong>Foundry</strong> builds pro-code agents grounded in governed data</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400" />
+              <span><strong>Copilot Studio</strong> enables low-code agents with connectors & Agent Builder</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-400" />
+              <span><strong>M365 Copilot</strong> surfaces insights in Word, Excel, Teams via extensions</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400" />
+              <span><strong>Content Safety</strong> + <strong>Responsible AI</strong> guard every AI interaction</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -47,7 +47,7 @@ const demoSteps: DemoStep[] = [
     number: 4,
     icon: <Brain className="h-8 w-8" />,
     title: "Query Data Agent",
-    description: "Build or query a Fabric data agent for insights",
+    description: "Build or query a Microsoft Fabric data agent for insights",
     timeEstimate: "~10 min",
   },
   {

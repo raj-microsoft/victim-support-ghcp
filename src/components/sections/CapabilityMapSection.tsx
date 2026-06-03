@@ -41,7 +41,7 @@ export default function CapabilityMapSection() {
       badgeVariant: "default",
     },
     {
-      id: "fabric",
+      id: "Microsoft Fabric",
       title: "Microsoft Fabric",
       icon: <Database className="h-8 w-8" />,
       bullets: [
@@ -67,8 +67,8 @@ export default function CapabilityMapSection() {
       badgeVariant: "default",
     },
     {
-      id: "fabric-agents",
-      title: "Fabric Data Agents",
+      id: "Microsoft Fabric-agents",
+      title: "Microsoft Fabric Data Agents",
       icon: <Zap className="h-8 w-8" />,
       bullets: [
         "Natural-language queries over governed data",
