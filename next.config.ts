@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  basePath: "/victim-support-ghcp",
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

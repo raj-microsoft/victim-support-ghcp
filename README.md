@@ -1,8 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Slachtofferhulp × Microsoft Workshop App
 
-## Getting Started
+A premium, executive-ready workshop microsite for Slachtofferhulp Nederland, showcasing how to choose and combine Microsoft ecosystem capabilities for victim support use cases.
 
-First, run the development server:
+## Run Instructions
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## How the Microsoft AI Decision Framework Was Translated
+
+The decision tree is the app's centerpiece, implementing a 3-layer wizard based on the [Microsoft AI Decision Framework](https://microsoft.github.io/Microsoft-AI-Decision-Framework/):
+
+1. **Layer 1 — "Should we do this?"** — Intake filter with outcome-first thinking, existing-tool check, AI/agent necessity checkpoint, and BXT (Business × Experience × Technology) scoring. Low BXT = Research/Defer, Medium = Incubate, High = Accelerate to MVP.
+
+2. **Layer 2 — "What kind of solution?"** — Classifies the use case into 9 categories (case management, analytics, knowledge retrieval, document extraction, conversational assistant, custom agent, workflow automation, evaluation/safety, productivity infusion).
+
+3. **Layer 3 — "Which Microsoft pattern fits?"** — Returns a recommendation with primary platform, supporting services, implementation pattern, experience model, adopt/extend/build guidance, governance notes, action safety requirement, and suggested demo path.
+
+## Decision Tree Outputs & Workshop Flow
+
+After completing the wizard, participants see:
+- **Primary platform** recommendation tailored to their need
+- **Implementation pattern** (e.g., "Case intelligence pattern", "Foundry grounded agent pattern")
+- **Agent Necessity Checkpoint** — validates whether agents are needed or simpler approaches suffice
+- **Solution Patterns Library** — 8 composable patterns showing how capabilities combine
+- **BXT readiness score** — guides whether to research, incubate, or accelerate
+
+## Main Design Choices
+
+- **Three-layer progressive disclosure** prevents overwhelm — each step adds specificity
+- **BXT scoring** gives workshop participants a tangible, shareable assessment
+- **Roadmap with localStorage** makes the app a living workshop artifact participants take away
+- **Priority formula** (Impact × Confidence / Effort) gamifies initiative ranking
+- **Solution patterns** emphasize complementarity — capabilities combine, not compete
+
+## Stack
+
+- Next.js 16 + React + TypeScript
+- Tailwind CSS + shadcn/ui components
+- Lucide icons
+- Browser localStorage (no backend)
+- Fully static, deployable anywhere
+
+---
+
+_Previously bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app)._
+
+## Development
+
+Run the development server:
 
 ```bash
 npm run dev
